@@ -1,0 +1,106 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-07-20 15:26:43
+  Workflow ID: 4d48e7f7-b68f-4b8b-9c63-d3d28ebdd6ab
+  Platform: Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43
+  Host: Shahira
+  User: shahira
+  Snakemake version: 9.23.1
+  Python version: 3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0]
+  Command: /home/shahira/.local/bin/snakemake --cores 2
+  Snakefile: /home/shahira/bioinfo_practice/Snakefile
+  Base directory: /home/shahira/bioinfo_practice
+  Run directory: /home/shahira/bioinfo_practice
+  Working directory: /home/shahira/bioinfo_practice
+  Config file(s): []
+  Config MD5: 99914b932bd37a50b983c5e7c90ae93b
+
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 2
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count
+-------------  -------
+align                1
+sam_to_bam           1
+sort_bam             1
+index_bam            1
+call_variants        1
+all                  1
+total                6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Jul 20 15:26:43 2026]
+localrule align:
+    input: yeast_genome.fasta, sample.fastq
+    output: aligned.sam
+    jobid: 4
+    reason: Missing output files: aligned.sam
+    resources: tmpdir=/tmp
+[Mon Jul 20 15:26:47 2026]
+Finished jobid: 4 (Rule: align)
+1 of 6 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Jul 20 15:26:47 2026]
+localrule sam_to_bam:
+    input: aligned.sam
+    output: aligned.bam
+    jobid: 3
+    reason: Missing output files: aligned.bam; Input files updated by another job: aligned.sam
+    resources: tmpdir=/tmp
+[Mon Jul 20 15:26:47 2026]
+Finished jobid: 3 (Rule: sam_to_bam)
+2 of 6 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Jul 20 15:26:47 2026]
+localrule sort_bam:
+    input: aligned.bam
+    output: aligned_sorted.bam
+    jobid: 2
+    reason: Missing output files: aligned_sorted.bam; Input files updated by another job: aligned.bam
+    resources: tmpdir=/tmp
+[Mon Jul 20 15:26:47 2026]
+Finished jobid: 2 (Rule: sort_bam)
+3 of 6 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Jul 20 15:26:47 2026]
+localrule index_bam:
+    input: aligned_sorted.bam
+    output: aligned_sorted.bam.bai
+    jobid: 5
+    reason: Missing output files: aligned_sorted.bam.bai; Input files updated by another job: aligned_sorted.bam
+    resources: tmpdir=/tmp
+[Mon Jul 20 15:26:48 2026]
+Finished jobid: 5 (Rule: index_bam)
+4 of 6 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Jul 20 15:26:48 2026]
+localrule call_variants:
+    input: yeast_genome.fasta, aligned_sorted.bam, aligned_sorted.bam.bai
+    output: variants.vcf
+    jobid: 1
+    reason: Missing output files: variants.vcf; Input files updated by another job: aligned_sorted.bam.bai, aligned_sorted.bam
+    resources: tmpdir=/tmp
+[Mon Jul 20 15:26:49 2026]
+Finished jobid: 1 (Rule: call_variants)
+5 of 6 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Jul 20 15:26:49 2026]
+localrule all:
+    input: variants.vcf
+    jobid: 0
+    reason: Input files updated by another job: variants.vcf
+    resources: tmpdir=/tmp
+[Mon Jul 20 15:26:49 2026]
+Finished jobid: 0 (Rule: all)
+6 of 6 steps (100%) done
+Complete log(s): /home/shahira/bioinfo_practice/.snakemake/log/2026-07-20T152643.004830.snakemake.log

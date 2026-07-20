@@ -60,3 +60,12 @@ Learning bioinformatics from the ground up — command line, Python, and Biopyth
 ## Summary
 
 This project demonstrates a complete NGS pipeline: raw sequencing reads → quality control → alignment → variant calling, using real yeast RNA-seq data from SRA (SRR6357070) and the S. cerevisiae R64-1-1 reference genome.
+## Automated pipeline (Snakemake)
+
+This entire pipeline (QC → alignment → variant calling) now runs with a single command:
+
+```bash
+snakemake --cores 2
+```
+
+Snakemake automatically determines execution order based on file dependencies defined in the `Snakefile`, re-running only steps whose inputs have changed.
