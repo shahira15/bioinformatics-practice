@@ -49,3 +49,14 @@ Learning bioinformatics from the ground up — command line, Python, and Biopyth
 - Files: `aligned_sorted.bam`, `aligned_sorted.bam.bai`
 
 **Next step:** variant calling / gene expression quantification
+### Stage 3: Variant Calling (bcftools)
+- Called variants using `bcftools mpileup` + `bcftools call`
+- Raw output contained many low-confidence candidates (mostly DP=1, likely sequencing noise)
+- Applied standard filtering: QUAL>20 and DP>10
+- **Result: 2 high-confidence variants identified**
+  - Chromosome I, position 141135: A→T (homozygous, DP=42, QUAL=154.42)
+  - Chromosome XV, position 118032: A→C (heterozygous, DP=41, QUAL=35.4)
+
+## Summary
+
+This project demonstrates a complete NGS pipeline: raw sequencing reads → quality control → alignment → variant calling, using real yeast RNA-seq data from SRA (SRR6357070) and the S. cerevisiae R64-1-1 reference genome.
