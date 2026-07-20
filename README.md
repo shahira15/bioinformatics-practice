@@ -30,3 +30,13 @@ Learning bioinformatics from the ground up — command line, Python, and Biopyth
 - NGS pipeline tools (FastQC, samtools, alignment)
 - Sequence alignment and phylogenetics
 - Workflow managers (Snakemake/Nextflow)
+## Pipeline progress
+
+### Stage 1: Quality Control (FastQC)
+- Downloaded real RNA-seq data (yeast, *S. cerevisiae*) from SRA accession SRR6357070
+- Ran FastQC on raw reads (`sample.fastq`)
+- Result: 50,000 reads, 101bp length, ~40% GC (matches expected yeast genome GC content)
+- Quality assessment: high confidence across full read length, no trimming needed
+- Report: `sample_fastqc.html`
+
+**Next step:** align reads to the yeast reference genome
