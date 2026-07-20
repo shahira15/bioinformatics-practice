@@ -40,3 +40,12 @@ Learning bioinformatics from the ground up — command line, Python, and Biopyth
 - Report: `sample_fastqc.html`
 
 **Next step:** align reads to the yeast reference genome
+### Stage 2: Alignment (BWA + samtools)
+- Downloaded yeast reference genome (S. cerevisiae R64-1-1, Ensembl)
+- Indexed genome with `bwa index`
+- Aligned 50,000 reads with `bwa mem`
+- Converted SAM → BAM, sorted, and indexed with `samtools`
+- **Result: 99.79% of reads mapped successfully** (`samtools flagstat`)
+- Files: `aligned_sorted.bam`, `aligned_sorted.bam.bai`
+
+**Next step:** variant calling / gene expression quantification
