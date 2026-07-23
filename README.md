@@ -1,6 +1,6 @@
 # Bioinformatics Practice
 
-Learning bioinformatics from the ground up — command line, Python, and Biopython — by building small tools that work with real biological data.
+Learning bioinformatics from the ground up: command line, Python, and Biopython — by building small tools that work with real biological data.
 
 ## What's in here
 
